@@ -18,13 +18,13 @@ spec:
       volumes:
         - name: bookstore-config
           configMap:
-            name: gozero-bookstore-config
+            name: bookstore-config
             defaultMode: 420
       containers:
         - name: gozero-bookstore
-          image: 'registry.ztosys.com/kubesphere/gozero-bookstore:latest'
+          image: 'gozero-bookstore:latest'
           command:
-            - gozero-bookstore.yaml
+            - zero-bookstore
           resources:
             limits:
               cpu: '1'
@@ -37,4 +37,4 @@ spec:
               mountPath: /etc/bookstore-api.yaml
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent

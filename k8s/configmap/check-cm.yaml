@@ -1,0 +1,21 @@
+apiVersion: v1
+data:
+  check.yaml: |-
+    Name: check.rpc
+    ListenOn: 127.0.0.1:8081
+    Etcd:
+      Hosts:
+      - 10.9.47.11:23549
+      Key: check.rpc
+    DataSource: root:password@tcp(10.9.47.11:20137)/gozero
+    Table: book
+    Cache:
+      - Host: 10.9.47.11:35399
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2021-02-25T08:00:47Z"
+  name: check-config
+  namespace: gozero
+  resourceVersion: "288126195"
+  selfLink: /api/v1/namespaces/default/configmaps/check-config
+  uid: 91649052-773f-11eb-ad8e-005056814dd2

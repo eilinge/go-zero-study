@@ -1,0 +1,21 @@
+apiVersion: v1
+data:
+  add.yaml: |-
+    Name: add.rpc
+    ListenOn: 127.0.0.1:8080
+    Etcd:
+      Hosts:
+      - 10.9.47.11:23549
+      Key: add.rpc
+    DataSource: root:password@tcp(10.9.47.11:20137)/gozero
+    Table: book
+    Cache:
+      - Host: 10.9.47.11:35399
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2021-02-25T08:04:07Z"
+  name: add-config
+  namespace: gozero
+  resourceVersion: "288128207"
+  selfLink: /api/v1/namespaces/default/configmaps/add-config
+  uid: 0896bad8-7740-11eb-ad8e-005056814dd2
