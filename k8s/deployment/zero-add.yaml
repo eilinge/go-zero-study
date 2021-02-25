@@ -22,9 +22,10 @@ spec:
             defaultMode: 420
       containers:
         - name: gozero-add
-          image: 'gozero-add:latest'
+          image: '10.9.36.172/kubesphere/gozero-add'
           command:
             - zero-add
+            - '--f=/opt/config/add.yaml'
           resources:
             limits:
               cpu: '1'
@@ -34,7 +35,7 @@ spec:
               memory: 100Mi
           volumeMounts:
             - name: add-config
-              mountPath: /etc/add.yaml
+              mountPath: /opt/config
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent

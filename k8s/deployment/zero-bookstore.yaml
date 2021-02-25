@@ -25,6 +25,7 @@ spec:
           image: 'gozero-bookstore:latest'
           command:
             - zero-bookstore
+            - '--f=/opt/config/bookstore-api.yaml'
           resources:
             limits:
               cpu: '1'
@@ -34,7 +35,7 @@ spec:
               memory: 100Mi
           volumeMounts:
             - name: bookstore-config
-              mountPath: /etc/bookstore-api.yaml
+              mountPath: /opt/config
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent

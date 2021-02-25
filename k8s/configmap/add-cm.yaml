@@ -17,5 +17,4 @@ metadata:
   name: add-config
   namespace: gozero
   resourceVersion: "288128207"
-  selfLink: /api/v1/namespaces/default/configmaps/add-config
   uid: 0896bad8-7740-11eb-ad8e-005056814dd2
