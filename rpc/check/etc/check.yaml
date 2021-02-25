@@ -2,9 +2,9 @@ Name: check.rpc
 ListenOn: 127.0.0.1:8081
 Etcd:
   Hosts:
-  - 10.9.56.153:23791
+  - 10.9.47.11:23549
   Key: check.rpc
-DataSource: root:@tcp(10.9.56.153:32508)/gozero
+DataSource: root:password@tcp(10.9.47.11:20137)/gozero
 Table: book
 Cache:
-  - Host: 10.9.56.153:32407
+  - Host: 10.9.47.11:35399

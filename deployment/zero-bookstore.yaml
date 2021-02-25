@@ -1,0 +1,40 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: gozero-bookstore
+  namespace: gozero
+  labels:
+    app: gozero-bookstore
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gozero-bookstore
+  template:
+    metadata:
+      labels:
+        app: gozero-bookstore
+    spec:
+      volumes:
+        - name: bookstore-config
+          configMap:
+            name: gozero-bookstore-config
+            defaultMode: 420
+      containers:
+        - name: gozero-bookstore
+          image: 'registry.ztosys.com/kubesphere/gozero-bookstore:latest'
+          command:
+            - gozero-bookstore.yaml
+          resources:
+            limits:
+              cpu: '1'
+              memory: 1Gi
+            requests:
+              cpu: 20m
+              memory: 100Mi
+          volumeMounts:
+            - name: bookstore-config
+              mountPath: /etc/bookstore-api.yaml
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always

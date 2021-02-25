@@ -5,10 +5,10 @@ Port: 8888
 Add:
   Etcd:
     Hosts:
-      - 10.9.56.153:23791
+      - 10.9.47.11:23549
     Key: add.rpc
 Check:
   Etcd:
     Hosts:
-      - 10.9.56.153:23791
+      - 10.9.47.11:23549
     Key: check.rpc

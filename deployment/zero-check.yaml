@@ -1,0 +1,40 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: gozero-check
+  namespace: gozero
+  labels:
+    app: gozero-check
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gozero-check
+  template:
+    metadata:
+      labels:
+        app: gozero-check
+    spec:
+      volumes:
+        - name: check-config
+          configMap:
+            name: gozero-check-config
+            defaultMode: 420
+      containers:
+        - name: gozero-check
+          image: 'registry.ztosys.com/kubesphere/gozero-check:latest'
+          command:
+            - gozero-check
+          resources:
+            limits:
+              cpu: '1'
+              memory: 1Gi
+            requests:
+              cpu: 20m
+              memory: 100Mi
+          volumeMounts:
+            - name: check-config
+              mountPath: /etc/check.yaml
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
